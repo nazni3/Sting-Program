@@ -1,0 +1,25 @@
+package CallableStatement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StoredProcedure {
+
+	public static void main(String[] args)throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/college","root","root");
+		System.out.println("Connection created Successfully");
+		Statement st= con.createStatement();
+		System.out.println("Statement created Successfully");
+		
+		st.execute("create procedure `retrievedata`()"
+                   +"Begin "
+				   +"select * from student;"
+                   +"End");
+		System.out.println("stored procedure created successfully");
+	}
+
+}
